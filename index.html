@@ -48,7 +48,47 @@
     line-height: 1.5;
   }
   .wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
-  header { padding: 72px 0 40px; }
+
+  /* ---- top: typing header + badge row ---- */
+  header.top { padding: 56px 0 32px; text-align: center; }
+  header.top .typing { max-width: 100%; height: auto; display: block; margin: 0 auto 22px; }
+  .badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+  .badges img { height: 24px; display: block; }
+
+  /* ---- personal intro ---- */
+  section.intro { padding: 20px 0 36px; border-top: 1px solid var(--border); }
+  section.intro h2 { font-size: 24px; margin: 0 0 4px; }
+  section.intro .pronouns { font-size: 13.5px; color: var(--text-muted); margin: 0 0 16px; font-style: italic; }
+  section.intro .bio { font-size: 16px; color: var(--text); max-width: 680px; margin: 0 0 22px; }
+  section.intro h3 { font-size: 15px; text-transform: uppercase; letter-spacing: 0.03em; color: var(--text-muted); margin: 22px 0 10px; }
+  section.intro ul { margin: 0; padding-left: 20px; }
+  section.intro li { margin-bottom: 6px; font-size: 15px; }
+  ul.contact-list { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 20px; }
+  ul.contact-list a { color: var(--accent); text-decoration: none; font-weight: 500; }
+  ul.contact-list a:hover { text-decoration: underline; }
+
+  /* ---- claude activity heatmap ---- */
+  section.claude-activity { padding: 20px 0 40px; border-top: 1px solid var(--border); }
+  section.claude-activity h2 { font-size: 16px; font-weight: 600; margin: 0 0 14px; }
+  section.claude-activity .note { font-size: 12.5px; color: var(--text-muted); margin-top: 10px; }
+  section.claude-activity { --ch-border: var(--border); --ch-surface: var(--surface); --ch-muted: var(--text-muted); }
+
+  /* ---- accordions ---- */
+  details.accordion { border-top: 1px solid var(--border); }
+  details.accordion:last-of-type { border-bottom: 1px solid var(--border); }
+  details.accordion summary {
+    cursor: pointer; list-style: none; padding: 22px 0;
+    font-size: 20px; font-weight: 700;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  details.accordion summary::-webkit-details-marker { display: none; }
+  details.accordion summary::after {
+    content: '+'; font-size: 22px; font-weight: 400; color: var(--text-muted);
+    transition: transform .15s ease;
+  }
+  details.accordion[open] summary::after { content: '\2212'; }
+  .accordion-body { padding-bottom: 30px; }
+
   .eyebrow {
     display: inline-block;
     font-size: 13px;
@@ -61,11 +101,10 @@
     border-radius: 999px;
     margin-bottom: 18px;
   }
-  h1 { font-size: clamp(28px, 5vw, 42px); font-weight: 700; margin: 0 0 14px; letter-spacing: -0.01em; }
-  .lede { font-size: 17px; color: var(--text-muted); max-width: 640px; margin: 0; }
+  .lede { font-size: 16px; color: var(--text-muted); max-width: 640px; margin: 0 0 24px; }
   nav.categories {
     display: flex; flex-wrap: wrap; gap: 10px;
-    margin-top: 28px;
+    margin-bottom: 8px;
   }
   nav.categories a {
     font-size: 14px; font-weight: 500;
@@ -74,9 +113,9 @@
     padding: 7px 16px;
   }
   nav.categories a:hover { border-color: var(--accent); color: var(--accent); }
-  section.category { padding: 36px 0; border-top: 1px solid var(--border); }
-  section.category h2 { font-size: 22px; margin: 0 0 6px; }
-  section.category .desc { color: var(--text-muted); font-size: 14.5px; margin: 0 0 24px; }
+  section.category { padding: 28px 0 8px; }
+  section.category h3 { font-size: 20px; margin: 0 0 6px; }
+  section.category .desc { color: var(--text-muted); font-size: 14.5px; margin: 0 0 20px; }
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -104,87 +143,166 @@
   .card-body h3 { font-size: 16px; margin: 0 0 6px; }
   .card-body p { font-size: 13.5px; color: var(--text-muted); margin: 0 0 10px; }
   .tag { display: inline-block; font-size: 11.5px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.03em; }
-  footer { padding: 48px 0 72px; color: var(--text-muted); font-size: 13.5px; border-top: 1px solid var(--border); margin-top: 20px; }
+
+  /* ---- "additional projects" dark cards (accordion 2) ---- */
+  .dark-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+  .dark-card { background: #1a1611; border: 1px solid #332c22; border-radius: 12px; padding: 18px 20px; }
+  .dark-card h3 { color: #e2a75c; font-size: 15px; margin: 0 0 8px; }
+  .dark-card p { font-size: 13px; color: #b3a893; margin: 0 0 14px; line-height: 1.5; }
+  .status-pill { display: inline-block; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; padding: 3px 10px; border-radius: 999px; background: #332818; color: #e2a75c; }
+
+  footer { padding: 40px 0 72px; color: var(--text-muted); font-size: 13.5px; border-top: 1px solid var(--border); margin-top: 20px; }
   footer a { color: var(--text-muted); }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <header>
-    <span class="eyebrow">Knowledge Work &amp; Slides</span>
-    <h1>Decks, frameworks &amp; written deliverables</h1>
-    <p class="lede">A curated collection of presentations, strategic frameworks, and consulting deliverables — replace this line with a short intro about your approach to this kind of work.</p>
-    <nav class="categories">
-      <a href="#slides">Slide Decks</a>
-      <a href="#frameworks">Frameworks &amp; Playbooks</a>
-      <a href="#case-studies">Case Studies</a>
-      <a href="#deliverables">Consulting Deliverables</a>
-    </nav>
+
+  <header class="top">
+    <img class="typing" alt="Typing animation"
+      src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=26&pause=1000&color=B6742A&center=true&vCenter=true&width=560&lines=%5BEDIT+ME%5D+Strategist+%26+Writer;%5BEDIT+ME%5D+Presentation+Designer;%5BEDIT+ME%5D+Add+your+own+line" />
+    <div class="badges">
+      <!-- Replace href values below with your real profile links. Swap logo/color per https://simpleicons.org if desired. -->
+      <a href="#" title="[EDIT ME: LinkedIn URL]"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white"></a>
+      <a href="https://github.com/electra-usa" title="GitHub"><img alt="GitHub" src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white"></a>
+      <a href="mailto:youremail@example.com" title="[EDIT ME: email]"><img alt="Email" src="https://img.shields.io/badge/Email-B6742A?style=flat&logo=gmail&logoColor=white"></a>
+    </div>
   </header>
 
-  <section class="category" id="slides">
-    <h2>Slide Decks &amp; Presentations</h2>
-    <p class="desc">Embed via Google Slides "Publish to web," Canva share link, or a PDF in this repo.</p>
-    <div class="grid">
-      <a class="card" href="#" target="_blank" rel="noopener">
-        <div class="thumb">Thumbnail / cover slide</div>
-        <div class="card-body">
-          <span class="tag">Deck</span>
-          <h3>Project name</h3>
-          <p>Who it was for, the purpose of the deck, and the outcome.</p>
-        </div>
-      </a>
-    </div>
+  <section class="intro">
+    <h2>Hi, I'm [EDIT ME: Your Name] 👋</h2>
+    <p class="pronouns">[EDIT ME: pronouns — delete this line if you'd rather not include it]</p>
+    <p class="bio">[EDIT ME: one or two sentence bio — who you are, what you focus on, and how you approach this kind of work.]</p>
+    <h3>What I do</h3>
+    <ul>
+      <li>[EDIT ME: bullet — e.g. Build decks, frameworks, and written deliverables for consulting engagements]</li>
+      <li>[EDIT ME: bullet]</li>
+      <li>[EDIT ME: bullet]</li>
+    </ul>
+    <h3>How to reach me</h3>
+    <ul class="contact-list">
+      <li><a href="#">[EDIT ME: LinkedIn]</a></li>
+      <li><a href="mailto:youremail@example.com">Email</a></li>
+      <li><a href="https://github.com/electra-usa">GitHub</a></li>
+    </ul>
   </section>
 
-  <section class="category" id="frameworks">
-    <h2>Frameworks &amp; Playbooks</h2>
-    <p class="desc">Reusable strategic frameworks you've developed.</p>
-    <div class="grid">
-      <a class="card" href="#" target="_blank" rel="noopener">
-        <div class="thumb">Thumbnail / diagram</div>
-        <div class="card-body">
-          <span class="tag">Framework</span>
-          <h3>Project name</h3>
-          <p>What problem it solves and how it's applied.</p>
-        </div>
-      </a>
-    </div>
+  <section class="claude-activity">
+    <h2 id="claude-heatmap-heading">Loading Claude activity…</h2>
+    <div id="claude-heatmap"></div>
+    <p class="note">Placeholder data for now — this reads from a shared file so it stays identical across all of my sites once it's wired up to something real.</p>
   </section>
 
-  <section class="category" id="case-studies">
-    <h2>Case Studies</h2>
-    <p class="desc">Written breakdowns of specific engagements or projects.</p>
-    <div class="grid">
-      <a class="card" href="#" target="_blank" rel="noopener">
-        <div class="thumb">Thumbnail / cover image</div>
-        <div class="card-body">
-          <span class="tag">Case Study</span>
-          <h3>Project name</h3>
-          <p>The challenge, your approach, and the measurable result.</p>
-        </div>
-      </a>
-    </div>
-  </section>
+  <details class="accordion" open>
+    <summary>See my work</summary>
+    <div class="accordion-body">
+      <span class="eyebrow">Knowledge Work &amp; Slides</span>
+      <p class="lede">A curated collection of presentations, strategic frameworks, and consulting deliverables — replace this line with a short intro about your approach to this kind of work.</p>
+      <nav class="categories">
+        <a href="#slides">Slide Decks</a>
+        <a href="#frameworks">Frameworks &amp; Playbooks</a>
+        <a href="#case-studies">Case Studies</a>
+        <a href="#deliverables">Consulting Deliverables</a>
+      </nav>
 
-  <section class="category" id="deliverables">
-    <h2>Consulting Deliverables</h2>
-    <p class="desc">Sample reports, audits, or planning documents produced for clients.</p>
-    <div class="grid">
-      <a class="card" href="#" target="_blank" rel="noopener">
-        <div class="thumb">Thumbnail / cover image</div>
-        <div class="card-body">
-          <span class="tag">Deliverable</span>
-          <h3>Project name</h3>
-          <p>Type of deliverable and the context it was created in.</p>
+      <section class="category" id="slides">
+        <h3>Slide Decks &amp; Presentations</h3>
+        <p class="desc">Embed via Google Slides "Publish to web," Canva share link, or a PDF in this repo.</p>
+        <div class="grid">
+          <a class="card" href="#" target="_blank" rel="noopener">
+            <div class="thumb">Thumbnail / cover slide</div>
+            <div class="card-body">
+              <span class="tag">Deck</span>
+              <h3>Project name</h3>
+              <p>Who it was for, the purpose of the deck, and the outcome.</p>
+            </div>
+          </a>
         </div>
-      </a>
+      </section>
+
+      <section class="category" id="frameworks">
+        <h3>Frameworks &amp; Playbooks</h3>
+        <p class="desc">Reusable strategic frameworks you've developed.</p>
+        <div class="grid">
+          <a class="card" href="#" target="_blank" rel="noopener">
+            <div class="thumb">Thumbnail / diagram</div>
+            <div class="card-body">
+              <span class="tag">Framework</span>
+              <h3>Project name</h3>
+              <p>What problem it solves and how it's applied.</p>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section class="category" id="case-studies">
+        <h3>Case Studies</h3>
+        <p class="desc">Written breakdowns of specific engagements or projects.</p>
+        <div class="grid">
+          <a class="card" href="#" target="_blank" rel="noopener">
+            <div class="thumb">Thumbnail / cover image</div>
+            <div class="card-body">
+              <span class="tag">Case Study</span>
+              <h3>Project name</h3>
+              <p>The challenge, your approach, and the measurable result.</p>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section class="category" id="deliverables">
+        <h3>Consulting Deliverables</h3>
+        <p class="desc">Sample reports, audits, or planning documents produced for clients.</p>
+        <div class="grid">
+          <a class="card" href="#" target="_blank" rel="noopener">
+            <div class="thumb">Thumbnail / cover image</div>
+            <div class="card-body">
+              <span class="tag">Deliverable</span>
+              <h3>Project name</h3>
+              <p>Type of deliverable and the context it was created in.</p>
+            </div>
+          </a>
+        </div>
+      </section>
     </div>
-  </section>
+  </details>
+
+  <details class="accordion">
+    <summary>Additional projects I'm working on</summary>
+    <div class="accordion-body">
+      <p class="desc">Things in progress that aren't necessarily repos or finished decks — frameworks in draft, ideas being tested, work you want visible without it living in "See my work" yet.</p>
+      <div class="dark-grid">
+        <div class="dark-card">
+          <h3>[EDIT ME: project/idea name]</h3>
+          <p>[EDIT ME: what it is and where it currently stands]</p>
+          <span class="status-pill">In Progress</span>
+        </div>
+        <div class="dark-card">
+          <h3>[EDIT ME: project/idea name]</h3>
+          <p>[EDIT ME: what it is and where it currently stands]</p>
+          <span class="status-pill">Exploring</span>
+        </div>
+        <div class="dark-card">
+          <h3>[EDIT ME: project/idea name]</h3>
+          <p>[EDIT ME: what it is and where it currently stands]</p>
+          <span class="status-pill">Draft</span>
+        </div>
+      </div>
+    </div>
+  </details>
 
   <footer>
     <p>See also: <a href="https://github.com/electra-usa">GitHub</a> · Built and maintained as a living portfolio.</p>
   </footer>
 </div>
+
+<script src="https://electra-usa.github.io/portfolio-shared/heatmap.js"></script>
+<script>
+  ClaudeHeatmap.render({
+    container: "claude-heatmap",
+    headingEl: "claude-heatmap-heading",
+    dataUrl: "https://electra-usa.github.io/portfolio-shared/claude-usage.json"
+  });
+</script>
 </body>
 </html>
